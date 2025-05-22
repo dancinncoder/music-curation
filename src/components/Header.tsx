@@ -1,9 +1,10 @@
+import Link from "next/link";
 import React from "react";
 
 function Header() {
   return (
     <div>
-      <div>on My Playlist</div>
+      <Link href="/">on My Playlist</Link>
     </div>
   );
 }
