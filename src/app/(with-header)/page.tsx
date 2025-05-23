@@ -1,5 +1,6 @@
 import Image from "next/image";
 import RecordIcon from "@/../../public/ui/record-icon.png";
+import AuthenticationBox from "@/components/AuthenticationBox";
 
 export default function Landing() {
   return (
@@ -14,12 +15,7 @@ export default function Landing() {
         <p>
           Review, Rank, Share <br /> your fav musics!
         </p>
-        <div className="flex flex-col items-start">
-          <button className="bg-amber-300 cursor-pointer">Login</button>
-          <button className="bg-amber-600 cursor-pointer">
-            Create Account
-          </button>
-        </div>
+        <AuthenticationBox />
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import AuthContext from "@/context/AuthContext";
 
 export default function RootLayout({
   children,
@@ -6,10 +7,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div lang="en">
-      {/* TODO: public page에는 Header 컴포넌트 없게 렌더링 */}
-      <Header />
-      {children}
-    </div>
+    <AuthContext>
+      <div lang="en">
+        <Header />
+        {children}
+      </div>
+    </AuthContext>
   );
 }
