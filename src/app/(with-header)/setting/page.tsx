@@ -1,7 +1,20 @@
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import SignOutBtn from "@/components/SignOutBtn";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 import React from "react";
 
-function page() {
-  return <div>setting page</div>;
-}
+export default async function SettingPage() {
+  const session = await getServerSession(authOptions);
+  if (!session) {
+    // 로그인 안 되어 있으면 강제로 홈으로 이동
+    redirect("/");
+  }
 
-export default page;
+  return (
+    <div>
+      setting page
+      <SignOutBtn />
+    </div>
+  );
+}

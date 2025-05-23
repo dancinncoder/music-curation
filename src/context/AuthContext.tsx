@@ -3,8 +3,8 @@
 import { TypeAuthProps } from "@/types/type-auth";
 import { SessionProvider } from "next-auth/react";
 
-function AuthContext({ children }: TypeAuthProps) {
-  return <SessionProvider>{children}</SessionProvider>;
+function AuthContext({ children, session }: TypeAuthProps) {
+  return <SessionProvider session={session}>{children}</SessionProvider>;
 }
 
 export default AuthContext;

@@ -16,7 +16,7 @@ function AuthenticationBox() {
         </button>
       ) : (
         <button
-          onClick={() => signIn()}
+          onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
           className="bg-amber-300 cursor-pointer"
         >
           Sign In
