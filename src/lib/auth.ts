@@ -38,12 +38,4 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
   },
-  // redirect: async ({ url, baseUrl }) => {
-  //   // 로그인 후 리다이렉트 경로 지정
-  //   if (url === baseUrl && `${baseUrl}/api/auth/signin`) {
-  //     return `${baseUrl}/dashboard`;
-  //   }
-  //   return url;
-  // },
-  // 위 코드는 signIn(-,"google", { callbackUrl: "/dashboard" }) 등으로 직접 리다이렉팅을 넣으줌으로써 해결할 수 있기때문에 삭제해야함ㅌ
 };
