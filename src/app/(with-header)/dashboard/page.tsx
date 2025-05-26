@@ -5,6 +5,7 @@ import React from "react";
 
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
+  console.log("Dashboard Page Session:", session);
 
   if (!session) {
     // 로그인 안 되어 있으면 홈으로 리디렉션

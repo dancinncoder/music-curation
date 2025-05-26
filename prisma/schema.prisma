@@ -1,0 +1,68 @@
+// Prisma Client 를 어떤 형식으로 생성할지 설정
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+// 어떤 DB에 연결할지, 연결 URL은 어디에서 가져올지 설정
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// DB의 테이블 정의. 각 모델은 하나의 테이블로 매핑됨.
+// 인증 사용자 (인터널 정보)
+model AuthUser {
+  id String @id @default(uuid()) @db.Uuid
+  googleId String @unique @map("google_id")
+  email String @unique
+  name String?
+  image String?
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  // 관계
+  appUser AppUser?
+
+  @@map("auth_users")
+}
+
+// 앱 사용자 (공개 정보)
+model AppUser {
+  uid String @id @default(uuid()) @db.Uuid
+  authUserId String @unique @db.Uuid @map("auth_user_id")
+  nickname String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  // 관계
+  authUser AuthUser @relation(fields: [authUserId], references: [id], onDelete: Cascade)
+  playlists Playlist? // 1:1 관계
+
+  @@map("app_users")
+}
+
+// 플레이리스트
+model Playlist {
+  id String @id @default(uuid()) @db.Uuid
+  userUid String @unique @map("user_uid") @db.Uuid // 1:1 관계이니 unique
+  artist String
+  musicTitle String @map("music_title")
+  link String?
+  myTake String?
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  // 관계
+  user AppUser @relation(fields: [userUid], references: [uid], onDelete: Cascade)
+
+  @@map("playlists")
+}
+
+
+
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init

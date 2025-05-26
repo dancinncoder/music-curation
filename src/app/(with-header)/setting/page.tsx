@@ -7,7 +7,7 @@ import SignInBtn from "@/components/SignInBtn";
 
 export default async function SettingPage() {
   const session = await getServerSession(authOptions);
-  // console.log("session", session);
+  console.log("Setting Page session", session);
   if (!session) {
     // 로그인 안 되어 있으면 강제로 홈으로 이동
     redirect("/");
