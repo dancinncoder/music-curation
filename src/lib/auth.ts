@@ -36,9 +36,9 @@ export const authOptions: NextAuthOptions = {
       token: JWT;
     }): Promise<Session & { user: { id?: string } }> {
       // 최초 로그인: session.user 존재함 → DB 기록 등 수행
-      console.log("session:", session);
-      console.log("token.sub", token.sub);
-      console.log("[SESSION CALLBACK] 호출됨", new Error().stack);
+      // console.log("session:", session);
+      // console.log("token.sub", token.sub);
+      // console.log("[SESSION CALLBACK] 호출됨", new Error().stack);
 
       if (!token?.sub) {
         console.warn("Token.sub가 없음, 세션 생성 스킵");
@@ -50,7 +50,7 @@ export const authOptions: NextAuthOptions = {
         email: session.user?.email ?? token.email,
         image: session.user?.image ?? token.picture,
       };
-      console.log("userInfo", userInfo);
+      // console.log("userInfo", userInfo);
 
       if (!userInfo.email || !userInfo.name || !userInfo.image) {
         throw new Error("세션에 사용자 정보가 부족함.");
