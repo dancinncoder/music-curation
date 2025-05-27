@@ -51,5 +51,6 @@ export async function findOrCreateAppUser(
     return appUser;
   } catch (error) {
     console.log("AppUser 찾기 또는 생성 중 에러:", error);
+    throw error;
   }
 }
