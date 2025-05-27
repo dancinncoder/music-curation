@@ -10,6 +10,7 @@ export default async function WithHeaderLayout({
   children: React.ReactNode;
 }) {
   const session = await getServerSession(authOptions);
+
   return (
     <AuthContext session={session}>
       <div lang="en">
