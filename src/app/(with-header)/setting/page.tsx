@@ -1,12 +1,14 @@
 import React from "react";
-import Box from "@/components/AuthenticationBox";
+import AuthenticationBox from "@/components/AuthenticationBox";
+import ProfileContainer from "@/components/ProfileContainer";
 
 export default async function SettingPage() {
   return (
     <div>
       setting page
       {/* {session ? <SignOutBtn /> : <SignInBtn />} */}
-      <Box />
+      <ProfileContainer />
+      <AuthenticationBox />
     </div>
   );
 }
