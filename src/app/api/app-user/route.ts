@@ -36,7 +36,7 @@ export async function GET() {
     }
 
     return NextResponse.json({ nickname: appUserNickname }, { status: 202 });
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: "DB error during appUser.nickanme GET" },
       { status: 500 }
