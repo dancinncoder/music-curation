@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
 // import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import {
-  HydrationBoundary,
-  QueryClient,
-  dehydrate,
-} from "@tanstack/react-query";
+import { QueryClient, dehydrate } from "@tanstack/react-query";
 import { getNickname } from "@/lib/name";
 import { QueryProvider } from "@/components/providers/QueryProvider";
 // import { getServerSession } from "next-auth";

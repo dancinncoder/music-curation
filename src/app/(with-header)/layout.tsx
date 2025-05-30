@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import AuthContext from "@/context/AuthContext";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
-import { Providers } from "@/components/providers/Providers";
+import { JotaiProvider } from "@/components/providers/JotaiProvider";
 
 // export default function WithHeaderLayout({ children, session }: TypeAuthProps) {
 export default async function WithHeaderLayout({
@@ -14,12 +14,12 @@ export default async function WithHeaderLayout({
 
   return (
     <AuthContext session={session}>
-      <Providers>
+      <JotaiProvider>
         <div lang="en">
           <Header />
           {children}
         </div>
-      </Providers>
+      </JotaiProvider>
     </AuthContext>
   );
 }

@@ -11,7 +11,7 @@ function ProfileContainerTwo() {
   });
 
   if (isLoading) return <p>Loading...</p>;
-  console.log("appUsers:", appUsers);
+  // console.log("appUsers:", appUsers);
   return (
     <div>
       <p>nickname(ReactQuery+Prefetch+Hydration):{appUsers?.nickname}</p>
