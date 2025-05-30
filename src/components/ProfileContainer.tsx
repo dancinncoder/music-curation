@@ -9,7 +9,11 @@ function ProfileContainer() {
 
   // console.log("nickname delievered in dashboard:", nickname);
 
-  return <div>nickname: {nickname}</div>;
+  return (
+    <div>
+      <p>nickname(Jotai): {nickname}</p>
+    </div>
+  );
 }
 
 export default ProfileContainer;
