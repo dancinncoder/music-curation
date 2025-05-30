@@ -1,6 +1,6 @@
 "use client";
 
-import { getNickname } from "@/lib/name";
+import { getNickname } from "@/lib/nickname";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 

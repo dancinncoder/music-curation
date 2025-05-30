@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 // import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { QueryClient, dehydrate } from "@tanstack/react-query";
-import { getNickname } from "@/lib/name";
+import { getNickname } from "@/lib/nickname";
 import { QueryProvider } from "@/components/providers/QueryProvider";
+import { getPlaylist } from "@/lib/playlists";
 // import { getServerSession } from "next-auth";
 // import { authOptions } from "./api/auth/[...nextauth]/route";
 // import WithHeaderLayout from "./(with-header)/layout";
@@ -38,6 +39,11 @@ export default async function RootLayout({
   });
   // 1) getNickname 함수를 통해 데이터 fetch
   // 2) queryKey는 캐시에 저장될 키. 추후 클라이언트에서 동일한 쿼리를 자동으로 재사용 가능하여 클라이언트에서 다시 요청하지 ㅇ낳고 서버에서 가져온 데이터 사용가능
+
+  await queryClient.prefetchQuery({
+    queryKey: ["playlist"],
+    queryFn: getPlaylist,
+  });
 
   // 캐시 상태 직렬화 Dehydrate : React Query의 캐시 상태를 직렬화 가능한 JSON으로 변환
   const dehydratedState = dehydrate(queryClient);
