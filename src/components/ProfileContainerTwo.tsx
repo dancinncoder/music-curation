@@ -1,20 +1,20 @@
 "use client";
 
-import { getNickname } from "@/lib/nickname";
+import { getAppUser } from "@/lib/appuser";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 
 function ProfileContainerTwo() {
-  const { data: appUsers, isLoading } = useQuery({
-    queryKey: ["appUsers"],
-    queryFn: getNickname,
+  const { data: appUser, isLoading } = useQuery({
+    queryKey: ["appUser"],
+    queryFn: getAppUser,
   });
 
   if (isLoading) return <p>Loading...</p>;
   // console.log("appUsers:", appUsers);
   return (
     <div>
-      <p>nickname(ReactQuery+Prefetch+Hydration):{appUsers?.nickname}</p>
+      <p>nickname(ReactQuery+Prefetch+Hydration):{appUser?.nickname}</p>
     </div>
   );
 }

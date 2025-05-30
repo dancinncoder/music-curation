@@ -3,7 +3,7 @@ import { authOptions } from "./auth";
 import { prisma } from "./prisma";
 
 // 서버컴포넌트에서 데이터 fetch
-export async function getNickname() {
+export async function getAppUser() {
   const session = await getServerSession(authOptions);
 
   // app_user.uid === session.user.id
@@ -12,8 +12,12 @@ export async function getNickname() {
     return null;
   }
 
+  // return await prisma.appUser.findUnique({
+  //   where: { uid: session.user.id },
+  //   select: { nickname: true },
+  // });
   return await prisma.appUser.findUnique({
     where: { uid: session.user.id },
-    select: { nickname: true },
+    select: { nickname: true, uid: true },
   });
 }

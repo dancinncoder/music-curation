@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 // import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { QueryClient, dehydrate } from "@tanstack/react-query";
-import { getNickname } from "@/lib/nickname";
+import { getAppUser } from "@/lib/appuser";
 import { QueryProvider } from "@/components/providers/QueryProvider";
-import { getPlaylist } from "@/lib/playlists";
+import { getPlaylist } from "@/lib/playlist";
 // import { getServerSession } from "next-auth";
 // import { authOptions } from "./api/auth/[...nextauth]/route";
 // import WithHeaderLayout from "./(with-header)/layout";
@@ -34,8 +34,8 @@ export default async function RootLayout({
 
   // 서버에서 데이터 미리 가져오기 Prefecth
   await queryClient.prefetchQuery({
-    queryKey: ["appUsers"],
-    queryFn: getNickname,
+    queryKey: ["appUser"],
+    queryFn: getAppUser,
   });
   // 1) getNickname 함수를 통해 데이터 fetch
   // 2) queryKey는 캐시에 저장될 키. 추후 클라이언트에서 동일한 쿼리를 자동으로 재사용 가능하여 클라이언트에서 다시 요청하지 ㅇ낳고 서버에서 가져온 데이터 사용가능

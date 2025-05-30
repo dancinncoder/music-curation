@@ -27,14 +27,14 @@ model AppUser {
   createdAt  DateTime  @default(now()) @map("created_at")
   updatedAt  DateTime  @updatedAt @map("updated_at")
   authUser   AuthUser  @relation(fields: [authUserId], references: [id], onDelete: Cascade)
-  playlists  Playlist?
+  playlist  Playlist[]
 
   @@map("app_users")
 }
 
 model Playlist {
   id         String   @id @default(uuid()) @db.Uuid
-  userUid    String   @unique @map("user_uid") @db.Uuid
+  userUid    String   @map("user_uid") @db.Uuid
   artist     String
   musicTitle String   @map("music_title")
   link       String?
@@ -43,5 +43,5 @@ model Playlist {
   updatedAt  DateTime @updatedAt @map("updated_at")
   user       AppUser  @relation(fields: [userUid], references: [uid], onDelete: Cascade)
 
-  @@map("playlists")
+  @@map("playlist")
 }

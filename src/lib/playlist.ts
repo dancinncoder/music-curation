@@ -13,9 +13,14 @@ export async function getPlaylist() {
   }
 
   // playlist 조회
-  const playlist = await prisma.playlist.findUnique({
+  const playlist = await prisma.playlist.findMany({
     where: { userUid: appUserUid },
+    orderBy: {
+      createdAt: "desc", // 최근 추가 순으로
+    },
   });
+
+  console.log("playlist from getplaylist:", playlist);
 
   return playlist;
 }
